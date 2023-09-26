@@ -1,0 +1,27 @@
+body{
+    background-color: #ECEDF3;
+}
+
+header{
+    width: 100%;
+    border-bottom: 1px solid red;
+    padding: 30px;
+    margin-bottom: 50px;
+}
+
+header h1{
+    color: red;
+}
+
+input{
+    margin: 10px;
+}
+
+.header-pessoal{
+    color: red;
+    border-bottom: 1px solid red;
+}
+
+form{
+    border-radius: 8px;
+}
