@@ -27,7 +27,7 @@
         </div>
 
         <section class="p-2 info-pessoal">
-            <h2 class="header-info-pessoal p-2 ">Informações pessoais</h2>
+            <h2 class="header-informacoes p-2 ">Informações pessoais</h2>
 
             <div class="row">
 
@@ -37,21 +37,21 @@
                 </div>
 
                 <div class="col-6">
-                    <label class="form-label"  for="campo-nome">Nome Completo</label>
+                    <label class="form-label" for="campo-nome">Nome Completo</label>
                     <input type="text" id="campo-nome" class="form-control">
                 </div>
 
             </div>
 
             <div class="row">
-                
+
                 <div class="col-6">
-                    <label class="form-label"  for="campo-rg">RG</label>
+                    <label class="form-label" for="campo-rg">RG</label>
                     <input type="text" id="campo-rg" class="form-control">
                 </div>
 
                 <div class="col-6">
-                    <label class="form-label"  for="campo-cpf">CPF</label>
+                    <label class="form-label" for="campo-cpf">CPF</label>
                     <input type="text" id="campo-cpf" class="form-control">
                 </div>
 
@@ -72,21 +72,21 @@
             </div>
 
             <div class="row">
-                
+
                 <div class="col-6">
                     <label class="form-label" for="campo-celular">Celular</label>
                     <input type="tel" id="campo-celular" class="form-control">
                 </div>
 
                 <div class="col-6">
-                    <label class="form-label"  for="campo-telefone-recado">Telefone Recado</label>
+                    <label class="form-label" for="campo-telefone-recado">Telefone Recado</label>
                     <input type="tel" id="campo-telefone-recado" class="form-control">
                 </div>
 
             </div>
 
             <div class="row">
-                
+
                 <div class="col-6">
                     <label class="form-label" for="campo-mae">Nome Mãe</label>
                     <input type="text" id="campo-mae" class="form-control">
@@ -100,7 +100,7 @@
             </div>
 
             <div class="row">
-                
+
                 <div class="col-6">
                     <label for="campo-raça-cor" class="form-label">Raça/Cor</label>
                     <select id="campo-raça-cor" class="form-select">
@@ -123,7 +123,7 @@
             </div>
 
             <div class="row">
-                
+
                 <div class="col-6">
                     <label class="form-label" for="campo-estado-civil">Estado Civil</label>
                     <select id="campo-estado-civil" class="form-select">
@@ -148,7 +148,7 @@
             </div>
 
             <div class="row">
-                
+
                 <div class="col-6">
                     <label class="form-label" for="campo-escolaridade">Escolaridade</label>
                     <select id="campo-escolaridade" class="form-select">
@@ -166,7 +166,7 @@
 
 
         <section class="p-2 info-conjuge">
-            <h2 class="header-info-conjuge p-2">Informações do Conjugê</h2>
+            <h2 class="header-informacoes p-2">Informações do Conjugê</h2>
 
             <div class="row">
                 <div class="col-6">
@@ -175,37 +175,169 @@
                 </div>
             </div>
 
-          <div class="row">
-                
-            <div class="col-6">
+            <div class="row">
+
+                <div class="col-6">
                     <label class="form-label" for="campo-data-conjuge">Data de Nascimento</label>
                     <input type="date" id="campo-data-conjuge" class="form-control">
                 </div>
 
-            <div class="col-6">
-                <label for="campo-cpf-conjuge" class="form-label">CPF</label>
-                <input type="text" id="campo-cpf-conjuge" class="form-control">
+                <div class="col-6">
+                    <label for="campo-cpf-conjuge" class="form-label">CPF</label>
+                    <input type="text" id="campo-cpf-conjuge" class="form-control">
+                </div>
+
             </div>
 
-          </div>
 
+            <div class="row">
 
-          <div class="row">
-        
-            <div class="col-6">
-                <label for="campo-rg-conjuge" class="form-label">RG</label>
-                <input type="text" id="campo-rg-conjuge" class="form-control">
+                <div class="col-6">
+                    <label for="campo-rg-conjuge" class="form-label">RG</label>
+                    <input type="text" id="campo-rg-conjuge" class="form-control">
+                </div>
+
+                <div class="col-6">
+                    <label for="campo-sus-conjuge" class="form-label">SUS</label>
+                    <input type="text" id="campo-sus-conjuge" class="form-control">
+                </div>
+
+            </div>
+        </section>
+
+        <section class="p-2 info-endereco">
+            <h2 class="header-informacoes p-2">Informações de Endereço</h2>
+
+            <div class="row">
+                <div class="col-6">
+                    <label class="form-label" for="campo-endereço">Endereço</label>
+                    <input type="text" id="campo-endereço" class="form-control">
+                </div>
+
+                    <div class="col-6">
+                        <label class="form-label" for="">Bairro</label>
+                        <input type="text" id="campo-bairro" class="form-control">
+                    </div>
+
+                
             </div>
 
-            <div class="col-6">
-                <label for="campo-sus-conjuge" class="form-label">SUS</label>
-                <input type="text" id="campo-sus-conjuge" class="form-control">
+            <div class="row">
+
+                
+                <div class="col-2">
+                    <label for="campo-numero-endereco" class="form-label">N°</label>
+                    <input type="number" id="campo-numero-endereco" class="form-control" min="0">
+                </div>
+                
+                <div class="col-4">
+                    <label class="form-label" for="campo-complemento">Complemento</label>
+                    <input type="text" id="campo-complemento" class="form-control">
+                </div>
+                
+                <div class="col-4">
+                    <label class="form-label" for="campo-municipio">Cidade</label>
+                    <input type="text" id="campo-municipio" class="form-control">
+                </div>
+
+                <div class="col-2">
+                    <label class="form-label" for="campo-estado">Estado</label>
+                    <select id="campo-estado" class="form-select">
+                        <option selected value="SELECIONE">Selecione</option>
+                        <option value="SP">SP</option>
+                    </select>
+                </div>
+
             </div>
 
-          </div>
+        </section>
+
+        <section class="p-2 info-gerais">
+            <h2 class="p-2 header-informacoes">Informações Gerais</h2>
+
+            <div class="row">            
+                
+                <div class="col-6">
+                    <label class="form-label" for="campo-titulo-eleitor">Titulo de Eleitor</label>
+                    <input type="text" id="campo-titulo-eleitor" class="form-control">
+                </div>
+
+                <div class="col-6">
+                    <label class="form-label" for="campo-reservista">Reservista</label>
+                    <input type="text" id="campo-reservista" class="form-control">
+                </div>
+
+            </div>
 
             
+            <div class="row">
 
+                <div class="col-6">
+                    <label class="form-label" for="campo-cnh">CNH</label>
+                    <input type="text" id="campo-cnh" class="form-control">
+                </div>
+                
+                <div class="col-6">
+                    <label class="form-label" for="campo-validade-cnh">Validade CNH</label>
+                    <input type="text" id="campo-validade-cnh" class="form-control">
+                </div>
+
+            </div>
+
+            <div class="row">
+
+                <div class="col-6">
+                    <label class="form-label" for="campo-numero-ctps">N° CTPS</label>
+                    <input type="text" id="campo-numero-ctps" class="form-control">
+                </div>
+                
+                <div class="col-6">
+                    <label class="form-label" for="campo-serie-ctps">Série CTPS</label>
+                    <input type="text" id="campo-serie-ctps" class="form-control">
+                </div>
+
+            </div>
+
+            <div class="row">
+
+                <div class="col-6">
+                    <label class="form-label" for="campo-sus">N° SUS</label>
+                    <input type="text" id="campo-sus" class="form-control">
+                </div>
+                
+                <div class="col-6">
+                    <label class="form-label" for="campo-pis">N° PIS</label>
+                    <input type="text" id="campo-pis" class="form-control">
+                </div>
+
+            </div>
+
+        </section>
+
+        <section class="p-2 info-bancaria">
+            <h2 class="p-2 header-informacoes">Informações Bancárias</h2>
+
+            <div class="row">
+                
+                <div class="col-6">
+                    <label class="form-label" for="campo-banco">Banco</label>
+                    <input type="text" id="campo-banco" class="form-control">
+                </div>
+
+            </div>
+
+            <div class="row">
+
+                <div class="col-6">
+                    <label class="form-label" for="campo-agencia">Agência</label>
+                    <input type="text" id="campo-agencia" class="form-control">
+                </div>
+
+                <div class="col-6">
+                    <label class="form-label" for="campo-conta-corrente">Conta Corrente</label>
+                    <input type="text" id="campo-conta-corrente" class="form-control">
+                </div>
+            </div>
 
         </section>
 

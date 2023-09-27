@@ -17,6 +17,12 @@ form {
     font-weight: bold;
 }
 
+.header-informacoes{
+    color: red;
+    border-bottom: 1px solid red;
+    font-weight: bold;
+}
+
 .header-info-pessoal {
     color: red;
     border-bottom: 1px solid red;
