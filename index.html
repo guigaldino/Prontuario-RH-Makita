@@ -13,10 +13,10 @@
 
 <body>
 
-    <form class="container mt-5 " style="background-color: white;" method="post">
+    <form class="container mt-5 " method="post">
 
 
-        <header>
+        <header class="form-title">
             <h1>Prontuário RH - Makita do Brasil</h1>
         </header>
 
@@ -26,25 +26,143 @@
             </div>
         </div>
 
-        <section class="p-2">
-            <h2 class="header-pessoal p-2 ">Informações pessoais</h2>
-            
+        <section class="p-2 info-pessoal">
+            <h2 class="header-info-pessoal p-2 ">Informações pessoais</h2>
+
             <div class="row">
-                <div class="col-5">
-                    <input type="text" class="form-control p-2" placeholder="Matricula">
+
+                <div class="col-6">
+                    <label class="form-label" for="campo-matricula">Matricula</label>
+                    <input type="text" id="campo-matricula" class="form-control">
                 </div>
+
+                <div class="col-6">
+                    <label class="form-label"  for="campo-nome">Nome Completo</label>
+                    <input type="text" id="campo-nome" class="form-control">
+                </div>
+
             </div>
 
             <div class="row">
-                <div class="col">
-                    <input type="text" class="form-control" placeholder="First name" aria-label="First name">
+                
+                <div class="col-6">
+                    <label class="form-label"  for="campo-rg">RG</label>
+                    <input type="text" id="campo-rg" class="form-control">
                 </div>
-                <div class="col">
-                    <input type="text" class="form-control" placeholder="Last name" aria-label="Last name">
+
+                <div class="col-6">
+                    <label class="form-label"  for="campo-cpf">CPF</label>
+                    <input type="text" id="campo-cpf" class="form-control">
                 </div>
+
             </div>
 
-            
+            <div class="row">
+
+                <div class="col-6">
+                    <label class="form-label" for="campo-email">E-mail</label>
+                    <input type="email" id="campo-email" class="form-control">
+                </div>
+
+                <div class="col-6">
+                    <label class="form-label" for="campo-data-nascimento">Data de Nascimento</label>
+                    <input type="date" id="campo-data-nascimento" class="form-control">
+                </div>
+
+            </div>
+
+            <div class="row">
+                
+                <div class="col-6">
+                    <label class="form-label" for="campo-celular">Celular</label>
+                    <input type="tel" id="campo-celular" class="form-control">
+                </div>
+
+                <div class="col-6">
+                    <label class="form-label"  for="campo-telefone-recado">Telefone Recado</label>
+                    <input type="tel" id="campo-telefone-recado" class="form-control">
+                </div>
+
+            </div>
+
+            <div class="row">
+                
+                <div class="col-6">
+                    <label class="form-label" for="campo-mae">Nome Mãe</label>
+                    <input type="text" id="campo-mae" class="form-control">
+                </div>
+
+                <div class="col-6">
+                    <label class="form-label" for="campo-pai">Nome Pai</label>
+                    <input type="text" id="campo-pai" class="form-control">
+                </div>
+
+            </div>
+
+            <div class="row">
+                
+                <div class="col-6">
+                    <label for="campo-raça-cor" class="form-label">Raça/Cor</label>
+                    <select id="campo-raça-cor" class="form-select">
+                        <option selected value="SELECIONE">Selecione</option>
+                        <option value="BRANCO">Branco</option>
+                        <option value="NEGRO">Negro</option>
+                    </select>
+                </div>
+
+                <div class="col-6">
+                    <label class="form-label" for="campo-genero">Gênero</label>
+                    <select id="campo-genero" class="form-select">
+                        <option selected value="SELECIONE">Selecione</option>
+                        <option value="MASCULINO">Masculino</option>
+                        <option value="FEMININO">Feminino</option>
+                        <option value="NAOINFORMAR">Não Informar</option>
+                    </select>
+                </div>
+
+            </div>
+
+            <div class="row">
+                
+                <div class="col-6">
+                    <label class="form-label" for="campo-estado-civil">Estado Civil</label>
+                    <select id="campo-estado-civil" class="form-select">
+                        <option selected value="SELECIONE">Selecione</option>
+                        <option value="SOLTEIRO">Solteiro</option>
+                        <option value="CASADO">Casado</option>
+                        <option value="SEPARADO">Separado</option>
+                        <option value="DIVORCIADO">Divorciado</option>
+                        <option value="VIUVO">Viúvo</option>
+                    </select>
+                </div>
+
+                <div class="col-6">
+                    <label class="form-label" for="campo-filhos-dependentes">Filhos/Dependentes Legais</label>
+                    <select id="campo-filhos-dependentes" class="form-select">
+                        <option value="SELECIONE">Selecione</option>
+                        <option value="SIM">Sim</option>
+                        <option value="NAO">Não</option>
+                    </select>
+                </div>
+
+            </div>
+
+            <div class="row">
+                
+                <div class="col-6">
+                    <label class="form-label" for="campo-escolaridade">Escolaridade</label>
+                    <select id="campo-escolaridade" class="form-select">
+                        <option selected value="SELECIONE">Selecione</option>
+                        <option value="MEDIOINCOMPLETO">Ensino Médio Incompleto</option>
+                        <option value="MEDIOCOMPLETO">Ensino Médio Completo</option>
+                        <option value="SUPERIORINCOMPLETO">Ensino Superior Incompleto</option>
+                        <option value="SUPERIORCOMPLETO">Ensino Superior Completo</option>
+                    </select>
+                </div>
+
+               
+
+            </div>
 
         </section>
 

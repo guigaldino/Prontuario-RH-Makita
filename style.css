@@ -1,27 +1,36 @@
-body{
+body {
     background-color: #ECEDF3;
 }
 
-header{
+form {
+    background-color: white;
+    border-radius: 8px;
+}
+
+.form-title h1 {
     width: 100%;
     border-bottom: 1px solid red;
     padding: 30px;
     margin-bottom: 50px;
+    font-family: sans-serif;
+    color: red;
+    font-weight: bold;
 }
 
-header h1{
+.header-info-pessoal {
     color: red;
+    border-bottom: 1px solid red;
+    font-weight: bold;
+}
+
+label{
+    margin: 10px 10px 0px 10px;
 }
 
 input{
     margin: 10px;
 }
 
-.header-pessoal{
-    color: red;
-    border-bottom: 1px solid red;
-}
-
-form{
-    border-radius: 8px;
+select{
+    margin: 10px;
 }
