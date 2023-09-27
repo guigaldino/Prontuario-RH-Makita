@@ -23,6 +23,11 @@ form {
     font-weight: bold;
 }
 
+.header-info-conjuge{
+    color: red;
+    border-bottom: 1px solid red;
+}
+
 label{
     margin: 10px 10px 0px 10px;
 }
