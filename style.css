@@ -23,19 +23,10 @@ form {
     font-weight: bold;
 }
 
-.header-info-pessoal {
-    color: red;
-    border-bottom: 1px solid red;
-    font-weight: bold;
-}
-
-.header-info-conjuge{
-    color: red;
-    border-bottom: 1px solid red;
-}
-
 label{
     margin: 10px 10px 0px 10px;
+    color: red;
+    font-weight: bold;
 }
 
 input{
@@ -44,4 +35,8 @@ input{
 
 select{
     margin: 10px;
+}
+
+.esconder-secao{
+    display: none;
 }
