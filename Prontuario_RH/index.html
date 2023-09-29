@@ -8,6 +8,8 @@
         integrity="sha384-T3c6CoIi6uLrA9TneNEoa7RxnatzjcDSCmG1MXxSR1GAsXEV/Dwwykc2MPK8M2HN" crossorigin="anonymous">
     <link rel="stylesheet" href="style.css">
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.7.1/jquery.min.js"></script>
+
+
     <title>Prontuário RH Makita</title>
 </head>
 
@@ -17,7 +19,7 @@
 
 
         <header class="form-title">
-            <h1>Prontuário RH - Makita do Brasil</h1>
+            <h1><img src="imagens/makita.png" alt="Logo makita"> Prontuário RH </h1>
         </header>
 
         <div hidden class="row">
@@ -224,14 +226,14 @@
                     <input type="text" id="campo-complemento" class="form-control">
                 </div>
 
-                    
 
-                
+
+
             </div>
 
             <div class="row">
 
-                
+
                 <div class="col-6">
                     <label class="form-label" for="">Bairro</label>
                     <input type="text" id="campo-bairro" class="form-control">
@@ -240,7 +242,7 @@
                 <div class="col-6">
                     <label class="form-label" for="campo-cep">CEP</label>
                     <input type="text" id="campo-cep" class="form-control">
-                </div>                
+                </div>
 
             </div>
 
@@ -280,7 +282,7 @@
                         <option value="SE">Sergipe</option>
                         <option value="TO">Tocantins</option>
                         <option value="DF">Distrito Federal</option>
-                        
+
                     </select>
                 </div>
             </div>
@@ -289,10 +291,10 @@
 
         <section class="p-2 info-gerais">
             <h2 class="p-2 header-informacoes">Informações Gerais</h2>
-            <p style="font-size: 13px; color: red;">* Quando aplicável</p>
+            <p style="color: red;">* Quando aplicável</p>
 
-            <div class="row">            
-                
+            <div class="row">
+
                 <div class="col-6">
                     <label class="form-label" for="campo-titulo-eleitor">Titulo de Eleitor</label>
                     <input type="text" id="campo-titulo-eleitor" class="form-control">
@@ -305,15 +307,15 @@
 
             </div>
 
-            
+
             <div class="row">
 
                 <div class="col-6">
                     <label class="form-label" for="campo-cnh">CNH</label>
                     <input type="text" id="campo-cnh" class="form-control">
-                    
+
                 </div>
-                
+
                 <div class="col-6">
                     <label class="form-label" for="campo-validade-cnh">Validade CNH</label>
                     <input type="text" id="campo-validade-cnh" class="form-control">
@@ -327,7 +329,7 @@
                     <label class="form-label" for="campo-numero-ctps">N° CTPS</label>
                     <input type="text" id="campo-numero-ctps" class="form-control">
                 </div>
-                
+
                 <div class="col-6">
                     <label class="form-label" for="campo-serie-ctps">Série CTPS</label>
                     <input type="text" id="campo-serie-ctps" class="form-control">
@@ -341,7 +343,7 @@
                     <label class="form-label" for="campo-sus">N° SUS</label>
                     <input type="text" id="campo-sus" class="form-control">
                 </div>
-                
+
                 <div class="col-6">
                     <label class="form-label" for="campo-pis">N° PIS</label>
                     <input type="text" id="campo-pis" class="form-control">
@@ -355,7 +357,7 @@
             <h2 class="p-2 header-informacoes">Informações Bancárias</h2>
 
             <div class="row">
-                
+
                 <div class="col-6">
                     <label class="form-label" for="campo-banco">Banco</label>
                     <input type="text" id="campo-banco" class="form-control">
@@ -378,6 +380,160 @@
 
         </section>
 
+        <section class="p-2 info-doc-pessoais">
+            <h2 class="p-2 header-informacoes">Documentos Pessoais</h2>
+            <p style="color: red;">* Documentos obrigatórios</p>
+
+            <div class="row">
+
+                <div class="col-6">
+                    <label for="campo-doc-rg"> RG*</label>
+                    <input type="file" id="campo-doc-rg" class="form-control inputDoc" accept=".pdf">
+                    <button type="button" id="btnRemoverRG" data-target="campo-doc-rg"
+                        class="btn btn-danger btn-sm btnPreview visualizarArquivo ">Visualizar Arquivo</button>
+                </div>
+
+                <div class="col-6">
+                    <label class="form-label" for="campo-doc-cnh">CNH</label>
+                    <input type="file" id="campo-doc-cnh" class="form-control inputDoc" accept=".pdf">
+                    <button type="button" id="btnRemoverCNH" data-target="campo-doc-cnh"
+                        class="btn btn-danger btn-sm btnPreview visualizarArquivo ">Visualizar Arquivo</button>
+                </div>
+
+            </div>
+
+            <div class="row">
+
+                <div class="col-6">
+                    <label class="form-label" for="campo-doc-endereco">Comprovante de Endereço*</label>
+                    <input type="file" class="form-control inputDoc" id="campo-doc-endereco" accept=".pdf">
+                    <button type="button" id="btnRemoverEndereço" data-target="campo-doc-endereco"
+                        class="btn btn-danger btn-sm btnPreview visualizarArquivo ">Visualizar Arquivo</button>
+                </div>
+
+                <div class="col-6">
+                    <label class="form-label" for="campo-doc-nascimento">Certidão de Nascimento (Quando
+                        Aplicável)</label>
+                    <input type="file" class="form-control inputDoc" id="campo-doc-nascimento" accept=".pdf">
+                    <button type="button" id="btnRemoverNascimento" data-target="campo-doc-nascimento"
+                        class="btn btn-danger btn-sm btnPreview visualizarArquivo ">Visualizar Arquivo</button>
+                </div>
+
+            </div>
+
+            <div class="row">
+
+                <div class="col-6">
+                    <label for="campo-doc-titulo-eleitor" class="form-label">Título de Eleitor</label>
+                    <input type="file" id="campo-doc-titulo-eleitor" class="form-control inputDoc" accept=".pdf">
+                    <button type="button" id="btnRemoverEleitor" data-target="campo-doc-titulo-eleitor"
+                        class="btn btn-danger btn-sm btnPreview visualizarArquivo ">Visualizar Arquivo</button>
+                </div>
+
+                <div class="col-6">
+                    <label class="form-label" for="campo-doc-comprovante-voto">Comprovante de Voto (Último)</label>
+                    <input type="file" id="campo-doc-comprovante-voto" class="form-control inputDoc" accept=".pdf">
+                    <button type="button" id="btnRemoverVoto" data-target="campo-doc-comprovante-voto"
+                        class="btn btn-danger btn-sm btnPreview visualizarArquivo ">Visualizar Arquivo</button>
+                </div>
+
+            </div>
+
+            <div class="row">
+
+                <div class="col-6">
+                    <label class="form-label" for="campo-doc-casamento">Certidão de Casamento (Quando
+                        Aplicável)</label>
+                    <input type="file" id="campo-doc-casamento" class="form-control inputDoc" accept=".pdf">
+                    <button type="button" id="btnRemoverCasamento" data-target="campo-doc-casamento"
+                        class="btn btn-danger btn-sm btnPreview visualizarArquivo ">Visualizar Arquivo</button>
+                </div>
+
+                <div class="col-6">
+                    <label class="form-label" for="campo-doc-ctps">CTPS</label>
+                    <input type="file" id="campo-doc-ctps" class="form-control inputDoc" accept=".pdf">
+                    <button type="button" id="btnRemoverCTPS" data-target="campo-doc-ctps"
+                        class="btn btn-danger btn-sm btnPreview visualizarArquivo ">Visualizar Arquivo</button>
+                </div>
+
+            </div>
+
+            <div class="row">
+
+                <div class="col-6">
+                    <label class="form-label" for="campo-doc-sus">SUS*</label>
+                    <input type="file" id="campo-doc-sus" class="form-control inputDoc" accept=".pdf">
+                    <button type="button" id="btnRemoverSUS" data-target="campo-doc-sus"
+                        class="btn btn-danger btn-sm btnPreview visualizarArquivo ">Visualizar Arquivo</button>
+                </div>
+
+                <div class="col-6">
+                    <label class="form-label" for="campo-doc-consulta">Consulta de Qualificação*</label>
+                    <input type="file" id="campo-doc-consulta" class="form-control inputDoc" accept=".pdf">
+                    <button type="button" id="btnRemoverConsulta" data-target="campo-doc-consulta"
+                        class="btn btn-danger btn-sm btnPreview visualizarArquivo ">Visualizar Arquivo</button>
+                </div>
+
+            </div>
+
+            <div class="row">
+
+                <div class="col-6">
+                    <label class="form-label" for="campo-doc-vacina">Carteira de Vacinação*</label>
+                    <input type="file" id="campo-doc-vacina" class="form-control inputDoc" accept=".pdf">
+                    <button type="button" id="btnRemoverVacina" data-target="campo-doc-vacina"
+                        class="btn btn-danger btn-sm btnPreview visualizarArquivo ">Visualizar Arquivo</button>
+                </div>
+
+                <div class="col-6">
+                    <label class="form-label" for="campo-doc-foto">Foto 3X4*</label>
+                    <input type="file" id="campo-doc-foto" class="form-control inputDoc" accept=".pdf">
+                    <button type="button" id="btnRemoverFoto" data-target="campo-doc-foto"
+                        class="btn btn-danger btn-sm btnPreview visualizarArquivo ">Visualizar Arquivo</button>
+                </div>
+
+            </div>
+
+            <div class="row">
+
+                <div class="col-6">
+                    <label class="form-label" for="campo-doc-reservista">Carteira de Reservista</label>
+                    <input type="file" id="campo-doc-reservista" class="form-control inputDoc" accept=".pdf">
+                    <button type="button" id="btnRemoverReservista" data-target="campo-doc-reservista"
+                        class="btn btn-danger btn-sm btnPreview visualizarArquivo ">Visualizar Arquivo</button>
+                </div>
+
+                <div class="col-6">
+                    <label class="form-label" for="campo-doc-historico-esc">Histórico Escolar* (Médio ou
+                        Fundamental)</label>
+                    <input type="file" id="campo-doc-historico-esc" class="form-control inputDoc" accept=".pdf">
+                    <button type="button" id="btnRemoverHistorico" data-target="campo-doc-historico-esc"
+                        class="btn btn-danger btn-sm btnPreview visualizarArquivo ">Visualizar Arquivo</button>
+                </div>
+
+            </div>
+
+            <div class="row">
+ 
+                <div class="col-6">
+                    <label class="form-label" for="campo-doc-historico-grad">Histórico Graduação</label>
+                    <input type="file" id="campo-doc-historico-grad" class="form-control inputDoc" accept=".pdf">
+                    <button type="button" id="btnRemoverGraduacao" data-target="campo-doc-historico-grad"
+                        class="btn btn-danger btn-sm btnPreview visualizarArquivo ">Visualizar Arquivo</button>
+                </div>
+
+                <div class="col-6">
+                    <label class="form-label" for="campo-doc-historico-pos">Histórico Pós-Graduação</label>
+                    <input type="file" id="campo-doc-historico-pos" class="form-control inputDoc" accept=".pdf">
+                    <button type="button" id="btnRemoverPos" data-target="campo-doc-historico-pos"
+                        class="btn btn-danger btn-sm btnPreview visualizarArquivo ">Visualizar Arquivo</button>
+                </div>
+
+            </div>
+
+
+        </section>
+
 
     </form>
 
@@ -385,31 +541,96 @@
         integrity="sha384-C6RzsynM9kWDrMNeT87bh95OGNyZPhcTNXj1NW7RuBCsyN/o0jlpcV8Qyq46cDfL"
         crossorigin="anonymous"></script>
 
-        <script>
-        
-            $(function(){
+    <script>
 
-                function escondeCampoConjuge(){
-                    
-                    let estadoCivil = $("#campo-estado-civil").val()
-                    let infoConjuge = $("#info-conjuge")[0]
 
-                  if(estadoCivil === 'CASADO'){
+
+        $(function () {
+
+
+            //Esconde a section Informações Conjugê quando o Estado civil é diferente de casado
+            function escondeCampoConjuge() {
+
+                let estadoCivil = $("#campo-estado-civil").val()
+                let infoConjuge = $("#info-conjuge")[0]
+
+                if (estadoCivil === 'CASADO') {
                     infoConjuge.classList.remove('esconder-secao')
-                  } else{
+                } else {
                     infoConjuge.classList.add('esconder-secao')
-                  }
-
                 }
 
-        
-                $('#campo-estado-civil').on('change', function(){
+            }
+
+            registraEventos()
+
+
+            // //Bloco para função de registrar eventos
+            function registraEventos() {
+
+                //Registra escondeCampoConjuge
+                $("#campo-estado-civil").on('change', function () {
                     escondeCampoConjuge()
                 })
 
-            })
 
-        </script>
+                //Registra visualizarArquivo
+                $(".visualizarArquivo").click(function(){
+                    let targetCampo = $(this).data("target")
+                    visualizarArquivo(targetCampo)
+                })
+
+
+                //registra esconderBotao
+                $("input[type=file]").change(function(){
+                    let campoDoc = $(this).attr("id")
+
+                    let buttonID = $(`[data-target=${campoDoc}]`).attr("id")
+
+                    esconderBotao(campoDoc, buttonID)
+
+                    
+                })
+                
+
+            }
+
+            // //Fim registrar eventos
+
+
+
+            function visualizarArquivo(idCampo) {
+                let inputDoc = document.getElementById(idCampo)
+
+                if (inputDoc.files.length > 0) {
+                    let arquivo = inputDoc.files[0]
+
+                    let arquivoURL = URL.createObjectURL(arquivo)
+
+                    window.open(arquivoURL)
+                } else {
+                    alert("Por favor selecione um arquivo para ser visualizado.")
+                }
+            }
+
+            function esconderBotao(idCampo, idButton) {
+                
+                let campoInput = document.getElementById(idCampo)
+                let botaoPreview = document.getElementById(idButton)
+
+                if (campoInput.files.length > 0) {
+                    botaoPreview.classList.remove("btnPreview")
+                } else {
+                    botaoPreview.classList.add('btnPreview')
+                }
+
+            }
+
+
+
+        })
+
+    </script>
 
 </body>
 
