@@ -575,6 +575,12 @@
                     esconderBotao(campoDoc, buttonID)
 
 
+                    //registra tirarFoto
+                    $("#botao-tirar-foto").on('click', function () {
+                        tirarFoto()
+                    })
+
+
                 })
 
 
@@ -625,6 +631,8 @@
 
             }
 
+
+
             function tirarFoto() {
                 const abrirCamera = $("#botao-tirar-foto")
                 const fotoContainer = $("#foto-container")
@@ -642,10 +650,27 @@
                             fotoContainer.append(video)
                             fotoContainer.append(captureButton)
 
+                            captureButton.click(function () {
+                                const canvas = document.createElement('canvas')
+                                canvas.width = video[0].videoWidth
+                                canvas.height = video[0].videoHeight
+                                canvas.getContext('2d').drawImage(video[0], 0, 0, canvas.width, canvas.height)
+
+                                const imagemCapturada = $("<img>")
+                                imagemCapturada.attr('src', canvas.toDataURL('image/png'))
+
+                                fotoContainer.html("")
+                                fotoContainer.append(imagemCapturada)
+
+                                stream.getTracks().forEach(track => track.stop())
+
+                            })
+
                         })
 
-
-
+                        .catch(function (error) {
+                            console.error('Erro ao acessar câmera', error);
+                        })
                 })
 
             }
