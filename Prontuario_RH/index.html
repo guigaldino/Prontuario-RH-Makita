@@ -22,9 +22,10 @@
             <h1><img src="imagens/makita.png" alt="Logo makita"> Prontuário RH </h1>
         </header>
 
-        <div hidden class="row">
-            <div class="col">
-                foto
+        <div class="row">
+            <div id="foto-container" class="col">
+                <button type="button" id="botao-tirar-foto" class="btn btn-outline-danger"><span
+                        style="font-weight: bold;">Tirar Foto</span></button>
             </div>
         </div>
 
@@ -514,7 +515,7 @@
             </div>
 
             <div class="row">
- 
+
                 <div class="col-6">
                     <label class="form-label" for="campo-doc-historico-grad">Histórico Graduação</label>
                     <input type="file" id="campo-doc-historico-grad" class="form-control inputDoc" accept=".pdf">
@@ -547,6 +548,40 @@
 
         $(function () {
 
+            registraEventos()
+
+            // //Bloco para função de registrar eventos
+            function registraEventos() {
+
+                //Registra escondeCampoConjuge
+                $("#campo-estado-civil").on('change', function () {
+                    escondeCampoConjuge()
+                })
+
+
+                //Registra visualizarArquivo
+                $(".visualizarArquivo").click(function () {
+                    let targetCampo = $(this).data("target")
+                    visualizarArquivo(targetCampo)
+                })
+
+
+                //registra esconderBotao
+                $("input[type=file]").change(function () {
+                    let campoDoc = $(this).attr("id")
+
+                    let buttonID = $(`[data-target=${campoDoc}]`).attr("id")
+
+                    esconderBotao(campoDoc, buttonID)
+
+
+                })
+
+
+            }
+
+            // //Fim registrar eventos
+
 
             //Esconde a section Informações Conjugê quando o Estado civil é diferente de casado
             function escondeCampoConjuge() {
@@ -561,42 +596,6 @@
                 }
 
             }
-
-            registraEventos()
-
-
-            // //Bloco para função de registrar eventos
-            function registraEventos() {
-
-                //Registra escondeCampoConjuge
-                $("#campo-estado-civil").on('change', function () {
-                    escondeCampoConjuge()
-                })
-
-
-                //Registra visualizarArquivo
-                $(".visualizarArquivo").click(function(){
-                    let targetCampo = $(this).data("target")
-                    visualizarArquivo(targetCampo)
-                })
-
-
-                //registra esconderBotao
-                $("input[type=file]").change(function(){
-                    let campoDoc = $(this).attr("id")
-
-                    let buttonID = $(`[data-target=${campoDoc}]`).attr("id")
-
-                    esconderBotao(campoDoc, buttonID)
-
-                    
-                })
-                
-
-            }
-
-            // //Fim registrar eventos
-
 
 
             function visualizarArquivo(idCampo) {
@@ -614,7 +613,7 @@
             }
 
             function esconderBotao(idCampo, idButton) {
-                
+
                 let campoInput = document.getElementById(idCampo)
                 let botaoPreview = document.getElementById(idButton)
 
@@ -623,6 +622,31 @@
                 } else {
                     botaoPreview.classList.add('btnPreview')
                 }
+
+            }
+
+            function tirarFoto() {
+                const abrirCamera = $("#botao-tirar-foto")
+                const fotoContainer = $("#foto-container")
+
+                abrirCamera.on('click', () => {
+                    navigator.mediaDevices.getUserMedia({ video: true })
+
+                        .then(function (stream) {
+                            const video = $('<video autoplay></video>')
+                            video.attr('srcObject', stream)
+
+                            const captureButton = $("<button>Capturar Foto</button>")
+
+                            fotoContainer.html('')
+                            fotoContainer.append(video)
+                            fotoContainer.append(captureButton)
+
+                        })
+
+
+
+                })
 
             }
 
