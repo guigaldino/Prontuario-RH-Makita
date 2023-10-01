@@ -24,8 +24,10 @@
 
         <div class="row">
             <div id="foto-container" class="col">
-                <button type="button" id="botao-tirar-foto" class="btn btn-outline-danger"><span
-                        style="font-weight: bold;">Tirar Foto</span></button>
+                <video></video>
+                <canvas></canvas>
+                <button type="button" id="button-tirar-foto" class="btn btn-outline-danger">Tirar Foto</button>
+
             </div>
         </div>
 
@@ -575,13 +577,11 @@
                     esconderBotao(campoDoc, buttonID)
 
 
-                    //registra tirarFoto
-                    $("#botao-tirar-foto").on('click', function () {
-                        tirarFoto()
-                    })
-
-
                 })
+
+                //registra tirarFoto
+                var btnFoto = document.querySelector("#button-tirar-foto")
+                    btnFoto.addEventListener("click", tirarFoto)
 
 
             }
@@ -631,48 +631,21 @@
 
             }
 
-
-
             function tirarFoto() {
-                const abrirCamera = $("#botao-tirar-foto")
-                const fotoContainer = $("#foto-container")
+                let video = document.querySelector("video")
 
-                abrirCamera.on('click', () => {
-                    navigator.mediaDevices.getUserMedia({ video: true })
+                navigator.mediaDevices.getUserMedia({video:true})
 
-                        .then(function (stream) {
-                            const video = $('<video autoplay></video>')
-                            video.attr('srcObject', stream)
-
-                            const captureButton = $("<button>Capturar Foto</button>")
-
-                            fotoContainer.html('')
-                            fotoContainer.append(video)
-                            fotoContainer.append(captureButton)
-
-                            captureButton.click(function () {
-                                const canvas = document.createElement('canvas')
-                                canvas.width = video[0].videoWidth
-                                canvas.height = video[0].videoHeight
-                                canvas.getContext('2d').drawImage(video[0], 0, 0, canvas.width, canvas.height)
-
-                                const imagemCapturada = $("<img>")
-                                imagemCapturada.attr('src', canvas.toDataURL('image/png'))
-
-                                fotoContainer.html("")
-                                fotoContainer.append(imagemCapturada)
-
-                                stream.getTracks().forEach(track => track.stop())
-
-                            })
-
-                        })
-
-                        .catch(function (error) {
-                            console.error('Erro ao acessar câmera', error);
-                        })
+                .then(stream => {
+                    video.srcObject = stream
+                    video.play()
                 })
 
+
+
+                .catch(erro => {
+                    console.error("Permissão negada pelo usuário")
+                })
             }
 
 
