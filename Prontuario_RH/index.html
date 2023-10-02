@@ -6,6 +6,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet"
         integrity="sha384-T3c6CoIi6uLrA9TneNEoa7RxnatzjcDSCmG1MXxSR1GAsXEV/Dwwykc2MPK8M2HN" crossorigin="anonymous">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.1/font/bootstrap-icons.css">
     <link rel="stylesheet" href="style.css">
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.7.1/jquery.min.js"></script>
 
@@ -24,8 +25,6 @@
 
         <div class="row">
             <div id="foto-container" class="col">
-                <video></video>
-                <canvas></canvas>
                 <button type="button" id="button-tirar-foto" class="btn btn-outline-danger">Tirar Foto</button>
 
             </div>
@@ -304,7 +303,7 @@
                 </div>
 
                 <div class="col-6">
-                    <label class="form-label" for="campo-reservista">Reservista</label>
+                    <label class="form-label" for="campo-reservista">Reservista*</label>
                     <input type="text" id="campo-reservista" class="form-control">
                 </div>
 
@@ -314,13 +313,13 @@
             <div class="row">
 
                 <div class="col-6">
-                    <label class="form-label" for="campo-cnh">CNH</label>
+                    <label class="form-label" for="campo-cnh">CNH*</label>
                     <input type="text" id="campo-cnh" class="form-control">
 
                 </div>
 
                 <div class="col-6">
-                    <label class="form-label" for="campo-validade-cnh">Validade CNH</label>
+                    <label class="form-label" for="campo-validade-cnh">Validade CNH*</label>
                     <input type="text" id="campo-validade-cnh" class="form-control">
                 </div>
 
@@ -391,16 +390,31 @@
 
                 <div class="col-6">
                     <label for="campo-doc-rg"> RG*</label>
+
                     <input type="file" id="campo-doc-rg" class="form-control inputDoc" accept=".pdf">
+
+                    <button type="button" id="btnVisualizarRG" data-target="campo-doc-rg"
+                        class="btn btn-danger btn-sm btnInput visualizarArquivo "><i class="bi bi-eye-fill"></i>
+                    </button>
+
                     <button type="button" id="btnRemoverRG" data-target="campo-doc-rg"
-                        class="btn btn-danger btn-sm btnPreview visualizarArquivo ">Visualizar Arquivo</button>
+                        class="btn btn-danger btn-sm btnInput btnRemoverArquivo"><i
+                            class="bi bi-trash-fill"></i></button>
+
                 </div>
 
                 <div class="col-6">
                     <label class="form-label" for="campo-doc-cnh">CNH</label>
+
                     <input type="file" id="campo-doc-cnh" class="form-control inputDoc" accept=".pdf">
+
+                    <button type="button" id="btnVisualizarCNH" data-target="campo-doc-cnh"
+                        class="btn btn-danger btn-sm btnInput visualizarArquivo "><i
+                            class="bi bi-eye-fill"></i></button>
+
                     <button type="button" id="btnRemoverCNH" data-target="campo-doc-cnh"
-                        class="btn btn-danger btn-sm btnPreview visualizarArquivo ">Visualizar Arquivo</button>
+                        class="btn btn-danger btn-sm btnInput btnRemoverArquivo"><i
+                            class="bi bi-trash-fill"></i></button>
                 </div>
 
             </div>
@@ -409,17 +423,31 @@
 
                 <div class="col-6">
                     <label class="form-label" for="campo-doc-endereco">Comprovante de Endereço*</label>
+
                     <input type="file" class="form-control inputDoc" id="campo-doc-endereco" accept=".pdf">
-                    <button type="button" id="btnRemoverEndereço" data-target="campo-doc-endereco"
-                        class="btn btn-danger btn-sm btnPreview visualizarArquivo ">Visualizar Arquivo</button>
+
+                    <button type="button" id="btnVisualizarEndereço" data-target="campo-doc-endereco"
+                        class="btn btn-danger btn-sm btnInput visualizarArquivo "><i
+                            class="bi bi-eye-fill"></i></button>
+
+                    <button type="button" id="btnRemoverEndereco" data-target="campo-doc-endereco"
+                        class="btn btn-danger btn-sm btnInput btnRemoverArquivo"><i
+                            class="bi bi-trash-fill"></i></button>
                 </div>
 
                 <div class="col-6">
                     <label class="form-label" for="campo-doc-nascimento">Certidão de Nascimento (Quando
                         Aplicável)</label>
+
                     <input type="file" class="form-control inputDoc" id="campo-doc-nascimento" accept=".pdf">
+
+                    <button type="button" id="btnVisualizarNascimento" data-target="campo-doc-nascimento"
+                        class="btn btn-danger btn-sm btnInput visualizarArquivo "><i
+                            class="bi bi-eye-fill"></i></button>
+
                     <button type="button" id="btnRemoverNascimento" data-target="campo-doc-nascimento"
-                        class="btn btn-danger btn-sm btnPreview visualizarArquivo ">Visualizar Arquivo</button>
+                        class="btn btn-danger btn-sm btnInput btnRemoverArquivo"><i
+                            class="bi bi-trash-fill"></i></button>
                 </div>
 
             </div>
@@ -428,16 +456,31 @@
 
                 <div class="col-6">
                     <label for="campo-doc-titulo-eleitor" class="form-label">Título de Eleitor</label>
+
                     <input type="file" id="campo-doc-titulo-eleitor" class="form-control inputDoc" accept=".pdf">
+
+                    <button type="button" id="btnVisualizarEleitor" data-target="campo-doc-titulo-eleitor"
+                        class="btn btn-danger btn-sm btnInput visualizarArquivo "><i
+                            class="bi bi-eye-fill"></i></button>
+
                     <button type="button" id="btnRemoverEleitor" data-target="campo-doc-titulo-eleitor"
-                        class="btn btn-danger btn-sm btnPreview visualizarArquivo ">Visualizar Arquivo</button>
+                        class="btn btn-danger btn-sm btnInput btnRemoverArquivo"><i
+                            class="bi bi-trash-fill"></i></button>
                 </div>
 
                 <div class="col-6">
+
                     <label class="form-label" for="campo-doc-comprovante-voto">Comprovante de Voto (Último)</label>
+
                     <input type="file" id="campo-doc-comprovante-voto" class="form-control inputDoc" accept=".pdf">
+
+                    <button type="button" id="btnVisualizarVoto" data-target="campo-doc-comprovante-voto"
+                        class="btn btn-danger btn-sm btnInput visualizarArquivo "><i
+                            class="bi bi-eye-fill"></i></button>
+
                     <button type="button" id="btnRemoverVoto" data-target="campo-doc-comprovante-voto"
-                        class="btn btn-danger btn-sm btnPreview visualizarArquivo ">Visualizar Arquivo</button>
+                        class="btn btn-danger btn-sm btnInput btnRemoverArquivo"><i
+                            class="bi bi-trash-fill"></i></button>
                 </div>
 
             </div>
@@ -447,16 +490,31 @@
                 <div class="col-6">
                     <label class="form-label" for="campo-doc-casamento">Certidão de Casamento (Quando
                         Aplicável)</label>
+
                     <input type="file" id="campo-doc-casamento" class="form-control inputDoc" accept=".pdf">
+
+                    <button type="button" id="btnVisualizarCasamento" data-target="campo-doc-casamento"
+                        class="btn btn-danger btn-sm btnInput visualizarArquivo "><i
+                            class="bi bi-eye-fill"></i></button>
+
                     <button type="button" id="btnRemoverCasamento" data-target="campo-doc-casamento"
-                        class="btn btn-danger btn-sm btnPreview visualizarArquivo ">Visualizar Arquivo</button>
+                        class="btn btn-danger btn-sm btnInput btnRemoverArquivo"><i
+                            class="bi bi-trash-fill"></i></button>
+
                 </div>
 
                 <div class="col-6">
                     <label class="form-label" for="campo-doc-ctps">CTPS</label>
+
                     <input type="file" id="campo-doc-ctps" class="form-control inputDoc" accept=".pdf">
+
+                    <button type="button" id="btnVisualizarCTPS" data-target="campo-doc-ctps"
+                        class="btn btn-danger btn-sm btnInput visualizarArquivo "><i
+                            class="bi bi-eye-fill"></i></button>
+
                     <button type="button" id="btnRemoverCTPS" data-target="campo-doc-ctps"
-                        class="btn btn-danger btn-sm btnPreview visualizarArquivo ">Visualizar Arquivo</button>
+                        class="btn btn-danger btn-sm btnInput btnRemoverArquivo"><i
+                            class="bi bi-trash-fill"></i></button>
                 </div>
 
             </div>
@@ -465,16 +523,30 @@
 
                 <div class="col-6">
                     <label class="form-label" for="campo-doc-sus">SUS*</label>
+
                     <input type="file" id="campo-doc-sus" class="form-control inputDoc" accept=".pdf">
+
+                    <button type="button" id="btnVisualizarSUS" data-target="campo-doc-sus"
+                        class="btn btn-danger btn-sm btnInput visualizarArquivo "><i
+                            class="bi bi-eye-fill"></i></button>
+
                     <button type="button" id="btnRemoverSUS" data-target="campo-doc-sus"
-                        class="btn btn-danger btn-sm btnPreview visualizarArquivo ">Visualizar Arquivo</button>
+                        class="btn btn-danger btn-sm btnInput btnRemoverArquivo"><i
+                            class="bi bi-trash-fill"></i></button>
                 </div>
 
                 <div class="col-6">
                     <label class="form-label" for="campo-doc-consulta">Consulta de Qualificação*</label>
+
                     <input type="file" id="campo-doc-consulta" class="form-control inputDoc" accept=".pdf">
+
+                    <button type="button" id="btnVisualizarConsulta" data-target="campo-doc-consulta"
+                        class="btn btn-danger btn-sm btnInput visualizarArquivo "><i
+                            class="bi bi-eye-fill"></i></button>
+
                     <button type="button" id="btnRemoverConsulta" data-target="campo-doc-consulta"
-                        class="btn btn-danger btn-sm btnPreview visualizarArquivo ">Visualizar Arquivo</button>
+                        class="btn btn-danger btn-sm btnInput btnRemoverArquivo"><i
+                            class="bi bi-trash-fill"></i></button>
                 </div>
 
             </div>
@@ -483,16 +555,30 @@
 
                 <div class="col-6">
                     <label class="form-label" for="campo-doc-vacina">Carteira de Vacinação*</label>
+
                     <input type="file" id="campo-doc-vacina" class="form-control inputDoc" accept=".pdf">
+
+                    <button type="button" id="btnVisualizarVacina" data-target="campo-doc-vacina"
+                        class="btn btn-danger btn-sm btnInput visualizarArquivo "><i
+                            class="bi bi-eye-fill"></i></button>
+
                     <button type="button" id="btnRemoverVacina" data-target="campo-doc-vacina"
-                        class="btn btn-danger btn-sm btnPreview visualizarArquivo ">Visualizar Arquivo</button>
+                        class="btn btn-danger btn-sm btnInput btnRemoverArquivo"><i
+                            class="bi bi-trash-fill"></i></button>
                 </div>
 
                 <div class="col-6">
                     <label class="form-label" for="campo-doc-foto">Foto 3X4*</label>
+
                     <input type="file" id="campo-doc-foto" class="form-control inputDoc" accept=".pdf">
+
+                    <button type="button" id="btnVisualizarFoto" data-target="campo-doc-foto"
+                        class="btn btn-danger btn-sm btnInput visualizarArquivo "><i
+                            class="bi bi-eye-fill"></i></button>
+
                     <button type="button" id="btnRemoverFoto" data-target="campo-doc-foto"
-                        class="btn btn-danger btn-sm btnPreview visualizarArquivo ">Visualizar Arquivo</button>
+                        class="btn btn-danger btn-sm btnInput btnRemoverArquivo"><i
+                            class="bi bi-trash-fill"></i></button>
                 </div>
 
             </div>
@@ -501,17 +587,31 @@
 
                 <div class="col-6">
                     <label class="form-label" for="campo-doc-reservista">Carteira de Reservista</label>
+
                     <input type="file" id="campo-doc-reservista" class="form-control inputDoc" accept=".pdf">
+
+                    <button type="button" id="btnVisualizarReservista" data-target="campo-doc-reservista"
+                        class="btn btn-danger btn-sm btnInput visualizarArquivo "><i
+                            class="bi bi-eye-fill"></i></button>
+
                     <button type="button" id="btnRemoverReservista" data-target="campo-doc-reservista"
-                        class="btn btn-danger btn-sm btnPreview visualizarArquivo ">Visualizar Arquivo</button>
+                        class="btn btn-danger btn-sm btnInput btnRemoverArquivo"><i
+                            class="bi bi-trash-fill"></i></button>
                 </div>
 
                 <div class="col-6">
                     <label class="form-label" for="campo-doc-historico-esc">Histórico Escolar* (Médio ou
                         Fundamental)</label>
+
                     <input type="file" id="campo-doc-historico-esc" class="form-control inputDoc" accept=".pdf">
+
+                    <button type="button" id="btnVisualizarHistorico" data-target="campo-doc-historico-esc"
+                        class="btn btn-danger btn-sm btnInput visualizarArquivo "><i
+                            class="bi bi-eye-fill"></i></button>
+
                     <button type="button" id="btnRemoverHistorico" data-target="campo-doc-historico-esc"
-                        class="btn btn-danger btn-sm btnPreview visualizarArquivo ">Visualizar Arquivo</button>
+                        class="btn btn-danger btn-sm btnInput btnRemoverArquivo"><i
+                            class="bi bi-trash-fill"></i></button>
                 </div>
 
             </div>
@@ -520,22 +620,76 @@
 
                 <div class="col-6">
                     <label class="form-label" for="campo-doc-historico-grad">Histórico Graduação</label>
+
                     <input type="file" id="campo-doc-historico-grad" class="form-control inputDoc" accept=".pdf">
+
+                    <button type="button" id="btnVisualizarGraduacao" data-target="campo-doc-historico-grad"
+                        class="btn btn-danger btn-sm btnInput visualizarArquivo "><i
+                            class="bi bi-eye-fill"></i></button>
+
                     <button type="button" id="btnRemoverGraduacao" data-target="campo-doc-historico-grad"
-                        class="btn btn-danger btn-sm btnPreview visualizarArquivo ">Visualizar Arquivo</button>
+                        class="btn btn-danger btn-sm btnInput btnRemoverArquivo"><i
+                            class="bi bi-trash-fill"></i></button>
+
+
                 </div>
 
                 <div class="col-6">
                     <label class="form-label" for="campo-doc-historico-pos">Histórico Pós-Graduação</label>
+
                     <input type="file" id="campo-doc-historico-pos" class="form-control inputDoc" accept=".pdf">
+
+                    <button type="button" id="btnVisualizarPos" data-target="campo-doc-historico-pos"
+                        class="btn btn-danger btn-sm btnInput visualizarArquivo "><i
+                            class="bi bi-eye-fill"></i></button>
+
                     <button type="button" id="btnRemoverPos" data-target="campo-doc-historico-pos"
-                        class="btn btn-danger btn-sm btnPreview visualizarArquivo ">Visualizar Arquivo</button>
+                        class="btn btn-danger btn-sm btnInput btnRemoverArquivo"><i
+                            class="bi bi-trash-fill"></i></button>
                 </div>
 
             </div>
 
 
         </section>
+        
+        <!-- Inicio - Modal caso aperte o botão de  remover arquivo e não tenha arquivo adicionado -->
+        <div class="modal fade" tabindex="-1" id="modalRemoveArquivo">
+            <div class="modal-dialog">
+              <div class="modal-content">
+                <div class="modal-header">
+                  <h5 class="modal-title">Nenhum Arquivo Adicionado</h5>
+                  <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                </div>
+                <div class="modal-body">
+                  <p>Adicione um arquivo e tente novamente.</p>
+                </div>
+                <div class="modal-footer">
+                  <button type="button" class="btn btn-danger" data-bs-dismiss="modal">Ok</button>
+                </div>
+              </div>
+            </div>
+          </div>
+          <!-- Final - Modal caso aperte o botão de  remover arquivo e não tenha arquivo adicionado -->
+
+          <!-- Inicio - Modal caso aperte o botão de  remover arquivo e não tenha arquivo adicionado -->
+          <div class="modal fade" tabindex="-1" id="modalVisualizaArquivo">
+            <div class="modal-dialog">
+              <div class="modal-content">
+                <div class="modal-header">
+                  <h5 class="modal-title">Nenhum Arquivo Adicionado</h5>
+                  <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                </div>
+                <div class="modal-body">
+                  <p>Por favor, selecione um arquivo para ser visualizado.</p>
+                </div>
+                <div class="modal-footer">
+                  <button type="button" class="btn btn-danger" data-bs-dismiss="modal">Ok</button>
+                </div>
+              </div>
+            </div>
+          </div>    
+          <!-- Final - Modal caso aperte o botão de visualizar arquivo e não tenha arquivo adicionado -->
 
 
     </form>
@@ -568,20 +722,12 @@
                 })
 
 
-                //registra esconderBotao
-                $("input[type=file]").change(function () {
-                    let campoDoc = $(this).attr("id")
-
-                    let buttonID = $(`[data-target=${campoDoc}]`).attr("id")
-
-                    esconderBotao(campoDoc, buttonID)
-
+                //registra removeArquivo
+                $(".btnRemoverArquivo").click(function () {
+                    let targetInput = $(this).data('target')
+                    removeArquivo(targetInput)
 
                 })
-
-                //registra tirarFoto
-                var btnFoto = document.querySelector("#button-tirar-foto")
-                    btnFoto.addEventListener("click", tirarFoto)
 
 
             }
@@ -614,39 +760,21 @@
 
                     window.open(arquivoURL)
                 } else {
-                    alert("Por favor selecione um arquivo para ser visualizado.")
+                    $("#modalVisualizaArquivo").modal('show')
                 }
             }
 
-            function esconderBotao(idCampo, idButton) {
+            function removeArquivo(idCampo) {
 
-                let campoInput = document.getElementById(idCampo)
-                let botaoPreview = document.getElementById(idButton)
-
-                if (campoInput.files.length > 0) {
-                    botaoPreview.classList.remove("btnPreview")
+                if ($(`#${idCampo}`).val() === "") {
+                    $("#modalRemoveArquivo").modal('show')
                 } else {
-                    botaoPreview.classList.add('btnPreview')
+                    $(`#${idCampo}`).val("")
                 }
-
             }
 
-            function tirarFoto() {
-                let video = document.querySelector("video")
-
-                navigator.mediaDevices.getUserMedia({video:true})
-
-                .then(stream => {
-                    video.srcObject = stream
-                    video.play()
-                })
 
 
-
-                .catch(erro => {
-                    console.error("Permissão negada pelo usuário")
-                })
-            }
 
 
 
