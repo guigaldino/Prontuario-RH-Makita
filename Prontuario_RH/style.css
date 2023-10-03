@@ -44,3 +44,12 @@ select{
 .esconder-secao{
     display: none;
 }
+
+.camera{
+    width: 100%;
+}
+
+.fotoModal{
+    width: 100%;
+    height: 384px;
+}
