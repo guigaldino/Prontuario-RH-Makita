@@ -740,9 +740,11 @@
                     </div>
 
                     <div class="modal-footer">
-                        <button type="button" id="button-captura-foto" class="btn btn-danger">Capturar imagem</button>
-                        <button style="display: none;" type="button" id="button-anexa-foto-tirada" class="btn btn-danger" data-bs-dismiss="modal">Anexar Imagem</button>
-                        <button type="button" id="button-cancela-foto" class="btn btn-secondary" data-bs-dismiss="modal">Cancelar</button>
+                        <button type="button" id="button-captura-foto" class="btn btn-danger"><i class="bi bi-camera-fill"></i> Capturar Imagem</button>
+                        <button disabled type="button" id="button-anexa-foto-tirada"
+                            class="btn btn-danger"><i class="bi bi-paperclip"></i> Anexar Imagem</button>
+                        <button type="button" id="button-cancela-foto" class="btn btn-secondary"
+                            data-bs-dismiss="modal">Cancelar</button>
                     </div>
                 </div>
             </div>
@@ -808,6 +810,11 @@
                 //registra baixarFoto
                 $("#button-baixar-foto").click(function () {
                     baixarFoto()
+                })
+
+                //registra anexarImgTirada 
+                $("#button-anexa-foto-tirada").click(function () {
+                    anexarImgTirada()
                 })
 
 
@@ -918,7 +925,7 @@
 
                 //captura a imagem e esconde campo video para aparecer campo canvas
                 btnCapturaFoto.on('click', function () {
-                    btnCapturaFoto.hide()
+                    
                     $("#button-anexa-foto-tirada").show()
                     const dataURL = canvasModal.toDataURL('image/png')
                     const context = canvasModal.getContext("2d")
@@ -926,6 +933,10 @@
 
                     videoModal.style.display = 'none'
                     canvasModal.style.display = 'block'
+
+                    $(this).prop('disabled', true)
+                    $("#button-anexa-foto-tirada").removeAttr('disabled')
+                    
                 })
 
                 // Acessa camera e exibe no feed do modal
@@ -953,7 +964,25 @@
                         })
                     }
                 })
+                
+            }
 
+
+            function anexarImgTirada() {
+                const img = $("<img>")
+                const canvasModal = $("#canvasModal")[0]
+                const containerIMG = $("#foto-container")
+
+                img.attr("src", canvasModal.toDataURL('image/png'))
+
+                containerIMG.append(img)
+
+                $("#modalTiraFoto").modal('hide')
+
+                $("#button-anexar-foto").hide()
+                $("#button-tirar-foto").hide()
+                $("#button-remover-foto").show()
+                $("#button-baixar-foto").show()
 
             }
 
@@ -962,14 +991,13 @@
                 const img = $("#foto-container img")
                 const inputAnexar = $("#input-anexar-foto")
 
-                if (img.length > 0 && inputAnexar[0].files.length > 0) {
+                if (img.length > 0) {
                     const src = img.attr('src')
-                    const selectedFile = inputAnexar[0].files[0]
 
                     //Cria link download
                     const link = document.createElement('a')
                     link.href = src
-                    link.download = selectedFile.name
+                    link.download = src
 
                     link.click()
                 }
