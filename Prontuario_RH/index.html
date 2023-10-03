@@ -701,6 +701,28 @@
         </div>
         <!-- Final - Modal caso aperte o botão de visualizar arquivo e não tenha arquivo adicionado -->
 
+        <!-- Inicio - Modal para confirmar excluir a foto -->
+        <div class="modal fade" tabindex="-1" id="modalRemoveFoto">
+            <div class="modal-dialog">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <h5 class="modal-title">Remover foto</h5>
+                        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                    </div>
+                    <div class="modal-body">
+                        <p>Deseja realmente excluir a foto?</p>
+                    </div>
+                    <div class="modal-footer">
+                        <button type="button" id="button-confirma-remover" class="btn btn-danger"
+                            data-bs-dismiss="modal">Sim</button>
+                        <button type="button" id="button-cancela-remover" class="btn btn-secondary"
+                            data-bs-dismiss="modal">Não</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <!-- Final - Modal para confirmar excluir a foto -->
+
 
     </form>
 
@@ -746,7 +768,15 @@
 
                 //registra removerFoto
                 $("#button-remover-foto").click(function () {
-                    removerFoto()
+                    $("#modalRemoveFoto").modal('show')
+                    $("#button-confirma-remover").click(function(){
+                        removerFoto()
+                    })
+                })
+
+                //registra baixarFoto
+                $("#button-baixar-foto").click(function(){
+                    baixarFoto()
                 })
 
 
@@ -796,6 +826,7 @@
 
             function removerFoto() {
                 $("#foto-container img").remove()
+                $("#input-anexar-foto").val('')
 
                 $("#button-anexar-foto").show()
                 $("#button-tirar-foto").show()
@@ -805,6 +836,10 @@
 
             function anexarFoto() {
                 const inputAnexar = $("#input-anexar-foto")
+
+                // Remover qualquer manipulador de eventos de alteração "change" anterior
+                inputAnexar.off('change')
+
                 inputAnexar.click()
 
                 inputAnexar.change(function () {
@@ -835,6 +870,24 @@
                     }
 
                 })
+            }
+
+            function baixarFoto(){
+                const img = $("#foto-container img")
+                const inputAnexar = $("#input-anexar-foto")
+
+                if(img.length > 0 && inputAnexar[0].files.length > 0){
+                    const src = img.attr('src')
+                    const selectedFile = inputAnexar[0].files[0]
+
+                    //Cria link download
+                const link = document.createElement('a')
+                link.href = src
+                link.download = selectedFile.name
+
+                link.click()
+                }
+
             }
 
         })
