@@ -8,6 +8,7 @@
         integrity="sha384-T3c6CoIi6uLrA9TneNEoa7RxnatzjcDSCmG1MXxSR1GAsXEV/Dwwykc2MPK8M2HN" crossorigin="anonymous">
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.1/font/bootstrap-icons.css">
     <link rel="stylesheet" href="style.css">
+    <link rel="shortcut icon" href="imagens/favicon.ico" type="image/x-icon">
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.7.1/jquery.min.js"></script>
 
 
@@ -23,10 +24,19 @@
             <h1><img src="imagens/makita.png" alt="Logo makita"> Prontuário RH </h1>
         </header>
 
-        <div class="row">
-            <div id="foto-container" class="col">
-                <button type="button" id="button-tirar-foto" class="btn btn-outline-danger">Tirar Foto</button>
+        <button style="display: block;" type="button" id="button-anexar-foto" class="btn btn-outline-danger"><i
+                class="bi bi-camera-fill"></i> Anexar Foto</button>
+        <button style="display: block;" type="button" id="button-tirar-foto" class="btn btn-outline-danger"><i
+                class="bi bi-camera-fill"></i> Tirar Foto</button>
+        <button style="display: none;" type="button" id="button-remover-foto" class="btn btn-outline-danger"><i
+                class="bi bi-trash-fill"></i> Remover Foto</button>
+        <button style="display: none;" type="button" id="button-baixar-foto" class="btn btn-outline-danger"><i
+                class="bi bi-download"></i> Baixar Foto</button>
 
+
+        <div class="row p-2">
+            <div id="foto-container" class="col">
+                <input type="file" id="input-anexar-foto" style="display: none;">
             </div>
         </div>
 
@@ -652,44 +662,44 @@
 
 
         </section>
-        
+
         <!-- Inicio - Modal caso aperte o botão de  remover arquivo e não tenha arquivo adicionado -->
         <div class="modal fade" tabindex="-1" id="modalRemoveArquivo">
             <div class="modal-dialog">
-              <div class="modal-content">
-                <div class="modal-header">
-                  <h5 class="modal-title">Nenhum Arquivo Adicionado</h5>
-                  <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <h5 class="modal-title">Nenhum arquivo adicionado</h5>
+                        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                    </div>
+                    <div class="modal-body">
+                        <p>Por favor, selecione um arquivo para ser excluído.</p>
+                    </div>
+                    <div class="modal-footer">
+                        <button type="button" class="btn btn-danger" data-bs-dismiss="modal">Ok</button>
+                    </div>
                 </div>
-                <div class="modal-body">
-                  <p>Adicione um arquivo e tente novamente.</p>
-                </div>
-                <div class="modal-footer">
-                  <button type="button" class="btn btn-danger" data-bs-dismiss="modal">Ok</button>
-                </div>
-              </div>
             </div>
-          </div>
-          <!-- Final - Modal caso aperte o botão de  remover arquivo e não tenha arquivo adicionado -->
+        </div>
+        <!-- Final - Modal caso aperte o botão de  remover arquivo e não tenha arquivo adicionado -->
 
-          <!-- Inicio - Modal caso aperte o botão de  remover arquivo e não tenha arquivo adicionado -->
-          <div class="modal fade" tabindex="-1" id="modalVisualizaArquivo">
+        <!-- Inicio - Modal caso aperte o botão de  remover arquivo e não tenha arquivo adicionado -->
+        <div class="modal fade" tabindex="-1" id="modalVisualizaArquivo">
             <div class="modal-dialog">
-              <div class="modal-content">
-                <div class="modal-header">
-                  <h5 class="modal-title">Nenhum Arquivo Adicionado</h5>
-                  <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <h5 class="modal-title">Nenhum arquivo adicionado</h5>
+                        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                    </div>
+                    <div class="modal-body">
+                        <p>Por favor, selecione um arquivo para ser visualizado.</p>
+                    </div>
+                    <div class="modal-footer">
+                        <button type="button" class="btn btn-danger" data-bs-dismiss="modal">Ok</button>
+                    </div>
                 </div>
-                <div class="modal-body">
-                  <p>Por favor, selecione um arquivo para ser visualizado.</p>
-                </div>
-                <div class="modal-footer">
-                  <button type="button" class="btn btn-danger" data-bs-dismiss="modal">Ok</button>
-                </div>
-              </div>
             </div>
-          </div>    
-          <!-- Final - Modal caso aperte o botão de visualizar arquivo e não tenha arquivo adicionado -->
+        </div>
+        <!-- Final - Modal caso aperte o botão de visualizar arquivo e não tenha arquivo adicionado -->
 
 
     </form>
@@ -727,6 +737,16 @@
                     let targetInput = $(this).data('target')
                     removeArquivo(targetInput)
 
+                })
+
+                //registra anexaFoto
+                $("#button-anexar-foto").click(function () {
+                    anexarFoto()
+                })
+
+                //registra removerFoto
+                $("#button-remover-foto").click(function () {
+                    removerFoto()
                 })
 
 
@@ -774,9 +794,48 @@
             }
 
 
+            function removerFoto() {
+                $("#foto-container img").remove()
 
+                $("#button-anexar-foto").show()
+                $("#button-tirar-foto").show()
+                $("#button-remover-foto").hide()
+                $("#button-baixar-foto").hide()
+            }
 
+            function anexarFoto() {
+                const inputAnexar = $("#input-anexar-foto")
+                inputAnexar.click()
 
+                inputAnexar.change(function () {
+                    const selectedFile = this.files[0]
+
+                    if (selectedFile) {
+                        const reader = new FileReader()
+
+                        reader.onload = function (e) {
+                            const img = $("<img>")
+                            img.attr('src', e.target.result)
+
+                            img.css({
+                                width: '352px',
+                                height: '372px'
+                            })
+
+                            $("#foto-container").append(img)
+                        }
+
+                        reader.readAsDataURL(selectedFile)
+
+                        $("#button-anexar-foto").hide()
+                        $("#button-tirar-foto").hide()
+                        $("#button-remover-foto").show()
+                        $("#button-baixar-foto").show()
+
+                    }
+
+                })
+            }
 
         })
 
