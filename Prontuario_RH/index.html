@@ -742,16 +742,40 @@
                     <div class="modal-footer">
                         <button type="button" id="button-captura-foto" class="btn btn-danger"><i
                                 class="bi bi-camera-fill"></i> Capturar Imagem</button>
+                        <button type="button" id="button-tirar-nova-foto" class="btn btn-danger"><i
+                                class="bi bi-camera-fill"></i> Nova Foto</button>
                         <button type="button" id="button-anexa-foto-tirada" class="btn btn-danger"><i
                                 class="bi bi-paperclip"></i> Anexar Imagem</button>
                         <button type="button" id="button-cancela-foto" class="btn btn-secondary"
                             data-bs-dismiss="modal">Cancelar</button>
+
                     </div>
                 </div>
             </div>
         </div>
         <!-- Final - Modal para tirar foto -->
 
+        <!-- Inicio - modal confirmar nova foto -->
+        <div class="modal fade" tabindex="-1" id="modalNovaFoto">
+            <div class="modal-dialog modal-dialog-centered modal-sm">
+                <div class="modal-content">
+
+                    <div class="modal-header">
+                        <h5 class="modal-title">Tirar nova foto</h5>
+                        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                    </div>
+
+                    <div class="modal-body">
+                        <p>Deseja realmente tirar uma nova foto?</p>
+                    </div>
+
+                    <div class="modal-footer">
+                        <button type="button" id="button-confirma-nova-foto" class="btn btn-danger">Sim</button>
+                        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Não</button>
+                    </div>
+                </div>
+            </div>
+            <!-- Final - modal confirmar nova foto -->
 
     </form>
 
@@ -771,6 +795,7 @@
             const videoModal = $("#videoModal")[0]
             const canvasModal = $("#canvasModal")[0]
             const btnCapturaFoto = $("#button-captura-foto")
+            const btnNovaFoto = $("#button-tirar-nova-foto")
             const canvasWidth = 353
             const canvasHeigth = 372
             canvasModal.width = canvasWidth
@@ -827,6 +852,11 @@
                 //registra anexarImgTirada 
                 $("#button-anexa-foto-tirada").click(function () {
                     anexarImgTirada()
+                })
+
+                //registra novaFoto
+                btnNovaFoto.click(function () {
+                    novaFoto()
                 })
 
 
@@ -927,6 +957,8 @@
                 // Acessa camera e exibe no feed do modal
                 navigator.mediaDevices.getUserMedia({ video: true })
                     .then(function (stream) {
+                        canvasModal.style.display = 'none'
+                        videoModal.style.display = 'block'
                         modalTiraFoto.modal('show')
                         videoModal.srcObject = stream
                         videoModal.play()
@@ -959,10 +991,11 @@
 
             function tirarFoto() {
 
-                btnCapturaFoto.prop('disabled', false)
-                $("#button-anexa-foto-tirada").prop('disabled', true)
-
                 ligarCamera()
+
+                btnCapturaFoto.show()
+                $("#button-anexa-foto-tirada").prop('disabled', true)
+                btnNovaFoto.hide()
 
                 //captura a imagem e esconde campo video para aparecer campo canvas
                 btnCapturaFoto.on('click', function () {
@@ -973,8 +1006,10 @@
 
                     videoModal.style.display = 'none'
                     canvasModal.style.display = 'block'
+
+                    btnCapturaFoto.hide()
+                    btnNovaFoto.show()
                     $("#button-anexa-foto-tirada").prop('disabled', false)
-                    btnCapturaFoto.prop('disabled', true)
 
                     setTimeout(function () {
                         desligarCamera()
@@ -982,8 +1017,15 @@
 
                 })
 
-                
+            }
 
+            function novaFoto() {
+                $("#modalNovaFoto").modal("show")
+
+                $("#button-confirma-nova-foto").click(function () {
+                    $("#modalNovaFoto").modal("hide")
+                    tirarFoto()
+                })
             }
 
             function anexarImgTirada() {
