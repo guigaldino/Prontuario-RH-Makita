@@ -740,9 +740,10 @@
                     </div>
 
                     <div class="modal-footer">
-                        <button type="button" id="button-captura-foto" class="btn btn-danger"><i class="bi bi-camera-fill"></i> Capturar Imagem</button>
-                        <button disabled type="button" id="button-anexa-foto-tirada"
-                            class="btn btn-danger"><i class="bi bi-paperclip"></i> Anexar Imagem</button>
+                        <button type="button" id="button-captura-foto" class="btn btn-danger"><i
+                                class="bi bi-camera-fill"></i> Capturar Imagem</button>
+                        <button type="button" id="button-anexa-foto-tirada" class="btn btn-danger"><i
+                                class="bi bi-paperclip"></i> Anexar Imagem</button>
                         <button type="button" id="button-cancela-foto" class="btn btn-secondary"
                             data-bs-dismiss="modal">Cancelar</button>
                     </div>
@@ -762,7 +763,18 @@
 
 
 
+
         $(function () {
+
+
+            const modalTiraFoto = $("#modalTiraFoto")
+            const videoModal = $("#videoModal")[0]
+            const canvasModal = $("#canvasModal")[0]
+            const btnCapturaFoto = $("#button-captura-foto")
+            const canvasWidth = 353
+            const canvasHeigth = 372
+            canvasModal.width = canvasWidth
+            canvasModal.height = canvasHeigth
 
             registraEventos()
 
@@ -910,38 +922,12 @@
                 })
             }
 
-            function tirarFoto() {
-                const modalTiraFoto = $("#modalTiraFoto")
-                const videoModal = $("#videoModal")[0]
-                const canvasModal = $("#canvasModal")[0]
-                const btnCapturaFoto = $("#button-captura-foto")
-                const canvasWidth = 353
-                const canvasHeigth = 372
-                canvasModal.width = canvasWidth
-                canvasModal.height = canvasHeigth
 
-                modalTiraFoto.modal('show')
-
-
-                //captura a imagem e esconde campo video para aparecer campo canvas
-                btnCapturaFoto.on('click', function () {
-                    
-                    $("#button-anexa-foto-tirada").show()
-                    const dataURL = canvasModal.toDataURL('image/png')
-                    const context = canvasModal.getContext("2d")
-                    context.drawImage(videoModal, 0, 0, canvasWidth, canvasHeigth)
-
-                    videoModal.style.display = 'none'
-                    canvasModal.style.display = 'block'
-
-                    $(this).prop('disabled', true)
-                    $("#button-anexa-foto-tirada").removeAttr('disabled')
-                    
-                })
-
+            function ligarCamera() {
                 // Acessa camera e exibe no feed do modal
                 navigator.mediaDevices.getUserMedia({ video: true })
                     .then(function (stream) {
+                        modalTiraFoto.modal('show')
                         videoModal.srcObject = stream
                         videoModal.play()
                     })
@@ -950,23 +936,55 @@
                         console.error('Erro ao acessar a câmera: ', error)
                     })
 
+                //limpa o canvas e rrexibe o vídeo ao fechar o modal
                 modalTiraFoto.on('hidden.bs.modal', function () {
-                    //limpa o canvas e rrexibe o vídeo ao fechar o modal
                     canvasModal.getContext('2d').clearRect(0, 0, canvasModal.width, canvasModal.height)
                     videoModal.style.display = 'block'
                     canvasModal.style.display = 'none'
 
-                    const stream = videoModal.srcObject
-                    if (stream) {
-                        const tracks = stream.getTracks()
-                        tracks.forEach(function (track) {
-                            track.stop()
-                        })
-                    }
+                    desligarCamera()
                 })
-                
             }
 
+
+            function desligarCamera() {
+                const stream = videoModal.srcObject
+                if (stream) {
+                    const tracks = stream.getTracks()
+                    tracks.forEach(function (track) {
+                        track.stop()
+                    })
+                }
+            }
+
+            function tirarFoto() {
+
+                btnCapturaFoto.prop('disabled', false)
+                $("#button-anexa-foto-tirada").prop('disabled', true)
+
+                ligarCamera()
+
+                //captura a imagem e esconde campo video para aparecer campo canvas
+                btnCapturaFoto.on('click', function () {
+
+                    const dataURL = canvasModal.toDataURL('image/png')
+                    const context = canvasModal.getContext("2d")
+                    context.drawImage(videoModal, 0, 0, canvasWidth, canvasHeigth)
+
+                    videoModal.style.display = 'none'
+                    canvasModal.style.display = 'block'
+                    $("#button-anexa-foto-tirada").prop('disabled', false)
+                    btnCapturaFoto.prop('disabled', true)
+
+                    setTimeout(function () {
+                        desligarCamera()
+                    }, 10)
+
+                })
+
+                
+
+            }
 
             function anexarImgTirada() {
                 const img = $("<img>")
