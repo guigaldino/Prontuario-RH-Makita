@@ -115,7 +115,7 @@
 
             <div class="row">
 
-                <div class="col-6">
+                <div class="col-4">
                     <label for="campo-raça-cor" class="form-label">Raça/Cor</label>
                     <select id="campo-raça-cor" class="form-select">
                         <option selected value="SELECIONE">Selecione</option>
@@ -124,13 +124,27 @@
                     </select>
                 </div>
 
-                <div class="col-6">
+                <div class="col-4">
                     <label class="form-label" for="campo-genero">Gênero</label>
                     <select id="campo-genero" class="form-select">
                         <option selected value="SELECIONE">Selecione</option>
                         <option value="MASCULINO">Masculino</option>
                         <option value="FEMININO">Feminino</option>
-                        <option value="NAOINFORMAR">Não Informar</option>
+                        <option value="BINARIO">Binário</option>
+                        <option value="NAOBINARIO">Não Binário</option>
+                    </select>
+                </div>
+
+                <div class="col-4">
+                    <label class="form-label" for="campo-pcd">PCD</label>
+                    <select id="campo-pcd" class="form-select">
+                        <option selected value="SELECIONE">Selecione</option>
+                        <option value="AUDITIVA">Auditiva</option>
+                        <option value="FISICA">Física</option>
+                        <option value="INTELECTUAL">Intelectual</option>
+                        <option value="VISUAL">Visual</option>
+                        <option value="MULTIPLA">Múltipla</option>
+                        <option value="REABILITADO">Reabilitado</option>
                     </select>
                 </div>
 
@@ -660,6 +674,13 @@
 
             </div>
 
+            <div style="margin-top: 20px; margin-right: 20px; margin-bottom: 10px;;" class="row justify-content-end">
+                <div class="col-1">
+                    <button id="btn-enviar" style="font-weight: bold; margin-bottom: 10px; font-size: 18px;"
+                        class="btn btn-danger">Enviar</button>
+                </div>
+            </div>
+
 
         </section>
 
@@ -859,6 +880,10 @@
                     novaFoto()
                 })
 
+                $("#btn-enviar").click(function(e){
+                    e.preventDefault()
+                    console.log('enviou dados')
+                })
 
             }
 
